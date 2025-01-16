@@ -1,17 +1,38 @@
-/*
-This is a comment block. It won't be read as an Ink story.
-Comments are very useful for leaving ideas for story and functionalty
-
-This exercise will demonstrate the following in the example video:
- - Basic Choices
- - Knot structure
- - Recurring choices
- - Conditionals in descriptions
- - Conditionals in choices
+ -> beachhead
  
- In the assignment:
- - Add four more knots (and feel free to change any of the example text, this is YOUR story)
- - Add at least one more conditional
-*/
-
-This is our basic story example! Goodbye!
+ == beachhead ==
+ You stand on the edge of the beach, the waves lap at your feet.
+ + [Walk East] -> eastbeach
+ + [Walk West] -> westbeach
+ 
+ == westbeach ==
+ The west end of the beach is barren, {not hatchetget:there seems to be something in the sand.}
+ * [Investigate sand] -> hatchetget
+ + [Return] -> beachhead
+ 
+ == hatchetget ==
+ You brush the sand away to reveal a hatchet.
+ * [Take hatchet] -> westbeach
+ 
+ == eastbeach ==
+ The east end of the beach features a cave that is boarded up.
+ * {hatchetget} [Break into the cave] -> cavemouth
+ + [Return] -> beachhead
+ 
+ == cavemouth ==
+ You hack at the wood until there is a big enough opening to slip through, the cave is dark but it looks like you can continue east. {not torchpickup: There is a torch on the floor.}
+ * [Pick up Torch] -> torchpickup
+ + [Go East] -> eastcave
+ 
+ == torchpickup ==
+ You pick up the torch, surely this will help.
+ * [Return] -> cavemouth
+ 
+ == eastcave ==
+ The east end of the cave is too dark to see anything.
+ + [Return] -> cavemouth
+ * {torchpickup} [Light Torch] -> eastcavelit
+ 
+ == eastcavelit ==
+ The torch illuminates the end of the cave, revealing The Malicious Bear. Oh great heavens!
+ -> END
